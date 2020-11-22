@@ -26,8 +26,9 @@ class App extends React.Component {
   }
 
   setReplacementOption(event) {
-    this.setState.replacementOption = event.target.value;
-    console.log(this.state.replacementOption);
+    this.setState({replacementOption: event.target.value});
+    //this.setState({replacementOption: event.target.value}, () => console.log(this.state.replacementOption));
+    //console.log(this.state.replacementOption);
   }
 
   handleTextChange(event) {
@@ -71,10 +72,22 @@ class App extends React.Component {
     const min = 0;
     const max = text.length;
     const rand = Math.floor(min + Math.random() * (max - min));
+
+    document.getElementById("curRandomString").value = text[rand];
+    if(this.state.replacementOption === "WO"){
+      document.getElementById("strChosen").value += ""+text[rand]+"\n";
+      text.splice(rand, 1);
+      var newtext = text.join('\n');
+      document.getElementById("strEnter").value = newtext;
+      this.setState({textareaVal: newtext});
+    }
+    else{
+      document.getElementById("strChosen").value += ""+text[rand]+"\n";
+    }
     //console.log(max);
     //console.log(text[rand]);
-    document.getElementById("curRandomString").value = text[rand];
-    document.getElementById("strChosen").value += ""+text[rand]+"\n";
+    
+    
   }
   
   render(){ 
