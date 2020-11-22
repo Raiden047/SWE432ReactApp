@@ -5,6 +5,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
+    <a href="https://mason.gmu.edu/~fibrahi/">Return to Home</a>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
